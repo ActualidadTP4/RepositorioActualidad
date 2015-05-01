@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+       <class name="Modelos.Usuario" table="usuarios">
+            <id name="nombre" type="string" column="nombreUsuario">
+            <generator class="assigned" />
+            </id>
+        <property name="correo" type="string" column="correo"/>
+        <property name="contraseña" type="string" column="contraseña" />
+        
+
+        
+   <joined-subclass name="Modelos.UsuarioSimple" table="UsuarioSimple">
+    <key column="nombreUsuarioSimple"/>
+   </joined-subclass>
+   
+   <joined-subclass name="Modelos.UsuarioModerador" table="UsuarioModerador">
+    <key column="nombreUsuarioModerador"/>
+   </joined-subclass>
+        </class>
+        
+
+</hibernate-mapping>
